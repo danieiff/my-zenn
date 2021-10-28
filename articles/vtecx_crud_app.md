@@ -39,7 +39,7 @@ vte.cxを使ってAPIサーバーを用意し、**エンドポイント**と**�
 ```ts
 axios.post('/d/{エンドポイント}', [ {/* スキーマ定義通りの内容のオブジェクト */} ])
 ```
-vte.cxではリクエストを送る際に以下を設定が必要です。
+vte.cxではリクエストを送る際に以下の設定が必要です。
 ```ts
 axios.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest'
 ```
@@ -147,7 +147,7 @@ validation関数でthrowされるerrorオブジェクト
 >Data Grid コンポーネント(Material UI)
 
 ```ts:Table.tsx
-useEffect(()=>{ /* GETリクエストを送って一覧表示するデータをstateに持たせる */ },[])
+useEffect(()=>{ /* 一覧表示するデータをGETリクエストしてstateに入れる */ },[])
 ```
 **失敗時**
 ```ts:Table.tsx
@@ -168,7 +168,7 @@ import { GridOverlay } from '@mui/x-data-grid'
     {
       user,
       id,
-      link: [ { ___href:'更新先',___rel:'{族称Relation}'} /* 1 or 複数 ,... */ ]
+      link: [ { ___href:'{更新先}', ___rel:'{←hrefの説明。selfだとかalias}'} /* 1 or 複数 ,... */ ]
       // ,...
     } // ,...
   ] // ,... ←ここは不要
@@ -310,7 +310,7 @@ const delete = async () => {
   // 一覧データのGETリクエストを送り再描画すること｡ データベース更新までのラグがある
 }
 ```
-Editコンポーネント
+複数編集するEditコンポーネント
 ```ts:Edit.tsx
 import { useLocation } from 'react-router-dom'
 
@@ -324,8 +324,8 @@ const Edit = () => {
   _entries.forEach( ({ entry }) => initial[entry.id] = entry )
   const [entries, setEntries] = useState(initial)
  // UI
-  const entries_form = Object.values(entries).map(props => {
-    return (
+  const entries_form = Object.values(entries).map(props => (
+
       <div class="レイアウト" key={props.id} >
         <div>{props.id}</div>
         <label>名</label>
@@ -337,8 +337,7 @@ const Edit = () => {
         />
         // ...
       </div>
-    )
-  })
+    ))
   return <form onSubmit={/*更新処理*/}> {entries_form} </form>
 }
 ```
