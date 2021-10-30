@@ -99,7 +99,7 @@ const Firstname: React.VFC<Props> = props => {
 ```
 ↓と ライブラリ[React Final Form](https://final-form.org/react)がおすすめ
 :::details バリデーションライブラリ Yup
-```ts: Register.tsx
+```ts:Register.tsx
 import * as yup from 'yup'
 // コンポーネントの外側
 const schema = yup.object().shape({
@@ -257,7 +257,7 @@ import { HashRouter, Switch, Route, Redirect } from 'react-router-dom'
 ```
 `<Switch></Switch>`の外側の`<Menu />`はパスに関係なく表示されます｡
 ### (4) データ編集 Edit.tsx
->onSelectionModelChange (Data Grid Props), Promise.all
+>onSelectionModelChange (Data Grid Props)
 
 一覧表UIの各行の最左列にチェックボックスがあり､`onSelectionModelChange` Propsで制御します｡
 複数データを編集と削除できるようにしてみます｡
@@ -293,16 +293,18 @@ return (
 まず削除処理
 ```ts:Table.tsx
 const delete = async () => {
-  // Promise.allSettled 渡されたすべてのプロミスが履行されるか拒否される ←→ Promise.all
-  const results = await Promise.allSettled(
-    selection.map( async ({ link: [{ ___href }] }) => {
-      try {
-        const r = await axios.delete('/d' + ___href)
-        return { success: `${___href}: ${r.data.feed.title}` }
-      } catch (e) {
-        if (typeof e === string) { // エラー種類ごとに対応すること
-          return { error: `${___href}: ${e}` }
-        } else // ...
+  if ( selection.length > 20 ) {
+    alert('一度に削除できるのは20件まで｡') // サーバーへの負荷対策
+    return
+  }
+  const feed = selection.map( ({ link }) => ({ link }) )
+  try {
+    const r = await axios.put('/d' + feed) // このように1度のトランザクションで複数削除できる
+    return { success: `削除されました: ${feed.join(', ')}` }
+  } catch (e) {
+      if ( e === '500') { // エラー種類ごとに対応すること
+        return { error: 'サーバーに問題があります'}
+      } else // ...
       }
     })
   )
@@ -324,8 +326,7 @@ const Edit = () => {
   _entries.forEach( ({ entry }) => initial[entry.id] = entry )
   const [entries, setEntries] = useState(initial)
  // UI
-  const entries_form = Object.values(entries).map(props => (
-
+  const entries_form = Object.values(entries).map(props =>
       <div class="レイアウト" key={props.id} >
         <div>{props.id}</div>
         <label>名</label>
@@ -337,13 +338,13 @@ const Edit = () => {
         />
         // ...
       </div>
-    ))
+    )
   return <form onSubmit={/*更新処理*/}> {entries_form} </form>
 }
 ```
 更新処理の構造は削除処理と同じ
 ```ts:Edit.tsx
-axios.put('/d/{エンドポイント}', [
+axios.put('/d/', [
   { // スキーマ定義の形にすること｡
     user: {
       firstname,
@@ -351,7 +352,7 @@ axios.put('/d/{エンドポイント}', [
       // ,...
     },
     link
-  }
+  } //,...複数のエントリ
 ])
 ```
 ### (5) ページネーション
@@ -372,14 +373,14 @@ const page = Number( query.get('page') ) || 1 // ない時は1。 number型キ�
 const total = useRef(0)
 const cursorEnd = useRef(1)
 
-const getFeed = async () => {
+const getFeed = () => {
  // 総件数
-  fallback(()=>{
+  fallback( async ()=>{
     const count = await axios.get(`d/{エンドポイント}?c`)
     total.current = count // 本当はcount.data.feed.title
   })
  // "カーソルを作る"
-  fallback(()=>{
+  fallback( async ()=>{
    // 最初と､ページがカーソルを超えるとき
     if (cursorEnd.current === 1 || cursorEnd.current < page) {
       // カーソルを更新する
@@ -392,18 +393,22 @@ const getFeed = async () => {
     }
   })
  // フィードを取得する｡
-  fallback(()=>{
+  fallback( async ()=>{
     const feed = await axios.get(`/d/{エンドポイント}?${query}&n=${page}&l=${LENGTH}`)
     setState({ feed: SEIKEI(feed.data) }) // 整形する (2)参照
   })
 
-const fallback = (func: ()=>Promise<void>) => {
+const fallback = async (func: ()=>Promise<void>) => {
   const LIMIT = 10
   let retry = 0
   while (retry++ < LIMIT) {
-    func()
-     .then(()=>break)
-     .catch(e=> LIMIT < retry && setState({ errMsg: e.response.message }) // エラー処理 (2)参照
+    try {
+      func()
+      retry = LIMIT
+    } catch(e) {
+      LIMIT < retry
+      ? setState({ errMsg: e.response.message }) // エラー処理 (2)参照
+      : await new Promise(resolve => setTimeout(resolve, 500))
     }
   }
 }
