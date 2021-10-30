@@ -373,15 +373,15 @@ const page = Number( query.get('page') ) || 1 // ない時は1。 number型キ�
 const total = useRef(0)
 const cursorEnd = useRef(1)
 
-const getFeed = () => {
+const getFeed = async () => {
  // 総件数
-  fallback( async ()=>{
+  await fallback( async ()=>{
     const count = await axios.get(`d/{エンドポイント}?c`)
     total.current = count // 本当はcount.data.feed.title
   })
  // "カーソルを作る"
-  fallback( async ()=>{
-   // 最初と､ページがカーソルを超えるとき
+  await fallback( async ()=>{
+  // 最初と､ページがカーソルを超えるとき
     if (cursorEnd.current === 1 || cursorEnd.current < page) {
       // カーソルを更新する
       // 前のカーソル終わり位置cursorEndを次のカーソル始め位置にする _pagination={始め,終わり} 最初は{1,50程度}にすること
@@ -393,21 +393,24 @@ const getFeed = () => {
     }
   })
  // フィードを取得する｡
-  fallback( async ()=>{
+  await fallback( async ()=>{
     const feed = await axios.get(`/d/{エンドポイント}?${query}&n=${page}&l=${LENGTH}`)
     setState({ feed: SEIKEI(feed.data) }) // 整形する (2)参照
   })
+}
 
 const fallback = async (func: ()=>Promise<void>) => {
   const LIMIT = 10
   let retry = 0
   while (retry++ < LIMIT) {
     try {
-      func()
+      await func()
       retry = LIMIT
     } catch(e) {
-      LIMIT < retry
-      ? setState({ errMsg: e.response.message }) // エラー処理 (2)参照
+      if (LIMIT < retry) {
+        setState({ errMsg: e.response.message }) // エラー処理 (2)参照
+        throw 'Error: 試行回数10超え'
+      }
       : await new Promise(resolve => setTimeout(resolve, 500))
     }
   }
