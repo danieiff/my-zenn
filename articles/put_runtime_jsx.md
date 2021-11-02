@@ -2,14 +2,16 @@
 title: "[メモ]import * as React from 'react'"が不要-React17"
 emoji: "📘"
 type: "tech" # tech: 技術記事 / idea: アイデア
-topics: [react, typescript]
+topics: ["react", "typescript"]
 published: false
 ---
+
 :::message alert
 vte.cxのサーバーサイドJS実行環境**nashorn**が、以下のtsconfigの`react-jsx`,`react-jsxdev`を通して出力されるコードに
 対応していないようだ。
 :::
 #### 概要
+
 React17-JSXの変換に`import * as React from 'react``が不要になった｡  [まとめ](https://zenn.dev/uhyo/articles/react17-new-jsx-transform)
 ---
 以下の通りに設定する
