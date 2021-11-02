@@ -3,7 +3,7 @@ title: "業務Webアプリ向けBaaS vte.cxに入門"
 emoji: "️🖥"
 type: "tech" # tech: 技術記事 / idea: アイデア
 topics: ["vtecx", "react", "typescript", "materialui"]
-published: false
+published: true
 ---
 
 vte.cx(ブイテックス) [歩き方](https://qiita.com/stakezaki/items/e526ca061d8f004db7f5)
@@ -299,7 +299,7 @@ const delete = async () => {
   }
   const feed = selection.map( ({ id, link }) => ({ id: id + '?_delete', link }) )
   try {
-    const r = await axios.put('/d' + feed) // このように1度のトランザクションで複数削除できる
+    const r = await axios.put('/d', feed) // このように1度のトランザクションで複数削除できる
     return { success: `削除されました: ${feed.join(', ')}` }
   } catch (e) {
       if ( e === '500') { // エラー種類ごとに対応すること
