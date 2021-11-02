@@ -1,5 +1,5 @@
 ---
-title: "import * as React from 'react'"が不要-React17"
+title: "import * as React from reactが不要-React17"
 emoji: "📘"
 type: "tech" # tech: 技術記事 / idea: アイデア
 topics: ["react", "typescript"]
