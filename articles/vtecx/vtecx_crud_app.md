@@ -297,7 +297,7 @@ const delete = async () => {
     alert('一度に削除できるのは20件まで｡') // サーバーへの負荷対策
     return
   }
-  const feed = selection.map( ({ link }) => ({ link }) )
+  const feed = selection.map( ({ id, link }) => ({ id: id + '?_delete', link }) )
   try {
     const r = await axios.put('/d' + feed) // このように1度のトランザクションで複数削除できる
     return { success: `削除されました: ${feed.join(', ')}` }

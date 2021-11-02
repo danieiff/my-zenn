@@ -5,6 +5,10 @@ type: "tech" # tech: 技術記事 / idea: アイデア
 topics: []
 published: false
 ---
+:::warning
+vte.cxのサーバーサイドJS実行環境**nashorn**が、以下のtsconfigの`react-jsx`,`react-jsxdev`を通して出力されるコードに
+対応していないようだ。
+:::
 #### 概要
 React17-JSXの変換に`import * as React from 'react``が不要になった｡  [まとめ](https://zenn.dev/uhyo/articles/react17-new-jsx-transform)
 ---
