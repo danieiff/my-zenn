@@ -385,7 +385,7 @@ const getFeed = async () => {
     if (cursorEnd.current === 1 || cursorEnd.current < page) {
       // カーソルを更新する
       // 前のカーソル終わり位置cursorEndを次のカーソル始め位置にする _pagination={始め,終わり} 最初は{1,50程度}にすること
-      // 総件数がLENGTH*RANGEより少なければ､Math.総件数カーソルが作られる
+      // 総件数がLENGTH*RANGEより少ないときは､ちょうど件数分のカーソルが作られる
       // RANGE(→50)ずつ上げていく
       const cursor = await axios.get( `/d/{エンドポイント}?_pagination=${cursorEnd.current},${ page + RANGE - 1 }&l=${LENGTH}`
       )
@@ -394,7 +394,7 @@ const getFeed = async () => {
   })
  // フィードを取得する｡
   await fallback( async ()=>{
-    const feed = await axios.get(`/d/{エンドポイント}?${query}&n=${page}&l=${LENGTH}`)
+    const feed = await axios.get(`/d/{エンドポイント}?n=${page}&l=${LENGTH}`)
     setState({ feed: SEIKEI(feed.data) }) // 整形する (2)参照
   })
 }
