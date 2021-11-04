@@ -262,7 +262,7 @@ import { HashRouter, Switch, Route, Redirect } from 'react-router-dom'
 一覧表UIの各行の最左列にチェックボックスがあり､`onSelectionModelChange` Propsで制御します｡
 複数データを編集と削除できるようにしてみます｡
 ```ts:Table.tsx
-import { button } from '@material-ui/core'
+import { Button } from '@material-ui/core'
 import { Link } from 'react-router-dom'
 // ...
 const [ids, setIds] = useState([])
@@ -278,7 +278,7 @@ return (
     components={{
       Footer: ()=> // selectionを編集コンポーネントに渡すこと｡
         <div class="レイアウト調整">
-          <button
+          <Button
             component={Link}
             to={{ pathname: '/edit', state: { selection }}
           >
