@@ -252,7 +252,7 @@ import { HashRouter, Switch, Route, Redirect } from 'react-router-dom'
 一覧表UIの各行の最左列にチェックボックスがあり､`onSelectionModelChange` Propsで制御します｡
 複数データを編集と削除できるようにしてみます｡
 ```ts:Table.tsx
-import { button } from '@material-ui/core'
+import { Button } from '@material-ui/core'
 import { Link } from 'react-router-dom'
 // ...
 const [ids, setIds] = useState([])
@@ -268,7 +268,7 @@ return (
     components={{
       Footer: ()=> // selectionを編集コンポーネントに渡すこと｡
         <div class="レイアウト調整">
-          <button
+          <Button
             component={Link}
             to={{ pathname: '/edit', state: { selection }}
           >
@@ -375,7 +375,7 @@ const getFeed = async () => {
     if (cursorEnd.current === 1 || cursorEnd.current < page) {
       // カーソルを更新する
       // 前のカーソル終わり位置cursorEndを次のカーソル始め位置にする _pagination={始め,終わり} 最初は{1,50程度}にすること
-      // 総件数がLENGTH*RANGEより少なければ､Math.総件数カーソルが作られる
+      // 総件数がLENGTH*RANGEより少ないときは､ちょうど件数分のカーソルが作られる
       // RANGE(→50)ずつ上げていく
       const cursor = await axios.get( `/d/{エンドポイント}?_pagination=${cursorEnd.current},${ page + RANGE - 1 }&l=${LENGTH}`
       )
@@ -384,7 +384,7 @@ const getFeed = async () => {
   })
  // フィードを取得する｡
   await fallback( async ()=>{
-    const feed = await axios.get(`/d/{エンドポイント}?${query}&n=${page}&l=${LENGTH}`)
+    const feed = await axios.get(`/d/{エンドポイント}?n=${page}&l=${LENGTH}`)
     setState({ feed: SEIKEI(feed.data) }) // 整形する (2)参照
   })
 }
