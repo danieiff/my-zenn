@@ -226,33 +226,23 @@ const catchUnregistered =
 ```ts:index.tsx
 import { HashRouter, Switch, Route, Redirect } from 'react-router-dom'
 // ...
- <HashRouter hashType="noslash">
-   <Menu /> // メニューコンポーネント 省略
-   <Switch>
-     <Route exact path="/" >
-       <Redirect to="/table" />
-     </Route >
-  // <indicatorContext.Provider
-    // value={{ indicatorState, indicatorDispatch }}
-  // >
-       <Route exact path="/table" exact>
-         <Table /> // 一覧コンポーネント
-       </Route>
-       <Route path="/register">
-         <Register /> // 登録コンポーネント
-        </Route>
-        <Route path="/edit">
-          <Edit />  // 編集コンポーネント (4)
-        </Route>
-   // </indicatorContext.Provider>
-    </Switch>
- // ReactのReducerとContextを使って､CRUDアクションごとに通知を表示すること｡axios中に各ボタンをdisabledにすること｡ 省略
- // {indicatorState.isShow &&
-   // <Indicator
-     // message={indicatorState.msg}
-     // onClick={indicatorDispatch({type:'hide'})}
-   // />
- // }
+<HashRouter hashType="noslash">
+  <Menu /> // メニューコンポーネント 省略
+  <Switch>
+    <Route exact path="/" >
+      <Redirect to="/table" />
+    </Route >
+    <Route exact path="/table" exact>
+      <Table /> // 一覧コンポーネント
+    </Route>
+    <Route path="/register">
+      <Register /> // 登録コンポーネント
+    </Route>
+    <Route path="/edit">
+      <Edit />  // 編集コンポーネント (4)
+    </Route>
+  </Switch>
+</HashRouter>
 // ...
 ```
 `<Switch></Switch>`の外側の`<Menu />`はパスに関係なく表示されます｡
