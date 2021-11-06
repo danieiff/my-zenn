@@ -28,7 +28,7 @@ Create, Read(+ページネーション, データベース検索), Update, Delet
   ├─ SearchField.tsx
   │   ユーザーの入力から､表示データGET通信にのせる検索用パラメータを生成します｡
   │                                               ・・・(6)
-  └ formComponents/{~Input}.tsx
+  └─ formComponents/{~Input}.tsx
      フォーム項目ごとに雛形コンポーネント､ファイルを作成
 ```
 ## (1)~(6)をさらっていきます
