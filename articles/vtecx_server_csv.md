@@ -1,5 +1,5 @@
 ---
-title: "vte.cxのBFF開発_csv出力"
+title: "vte.cxのBFF開発でCSV出力"
 emoji: "🖥"
 type: "tech" # tech: 技術記事 / idea: アイデア
 topics: [vtecx,csv]
@@ -60,7 +60,7 @@ vtecxapi.doResponseCsv(csv, 'user.csv')
 ```
 ビルド後、`GET '/s/user.csv'`
 ```ts
-axios.get('/s/user.csv', {responseType: 'blob'})
+axios.get('/s/user.csv', { responseType: 'blob' })
 ```
 
 ![csvファイル](/images/user_csv.png)
