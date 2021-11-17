@@ -1,5 +1,5 @@
 ---
-title: "vte.cxのBFF開発でCSV出力"
+title: "vte.cxのBFF開発_データベースからCSV出力"
 emoji: "🖥"
 type: "tech" # tech: 技術記事 / idea: アイデア
 topics: [vtecx,csv]
@@ -21,7 +21,7 @@ vte.cxのフロントエンド開発はViewと、ビジネスロジックのみ�
 - csvを返すファイルは *`{任意}.csv.ts/tsx`* とする
 - `vtecxapi.getBQ(sql)` vte.cxのAPIを通じてBigQueryに対して任意のSQLを実行できます。
 - `vtecxapi.doResponseCsv([ headers[], ...entry[] ], '{csvのファイル名}')`
-  レスポンスヘッダのcontent-disposition: "attachment; filename=\"{csvのファイル名}\""
+  レスポンスヘッダの`content-disposition: "attachment; filename=\"{csvのファイル名}\""`
 ```ts: user.csv.ts
 import * as vtecxapi from 'vtecxapi'
 
@@ -58,7 +58,7 @@ const csv = [TITLES, ...body]
 
 vtecxapi.doResponseCsv(csv, 'user.csv')
 ```
-ビルド後、`GET '/s/user.csv'`
+ビルド後、`GET '/s/user.csv'` `/s/{スクリプト名}` ~~ファイル名~~
 ```ts
 axios.get('/s/user.csv', { responseType: 'blob' })
 ```
