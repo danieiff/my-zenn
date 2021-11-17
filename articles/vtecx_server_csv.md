@@ -17,7 +17,7 @@ vte.cxのフロントエンド開発はViewと、ビジネスロジックのみ�
 ↓ BigQueryのテーブルからCSV出力します。
 ![BigQueryのuserテーブル](/images/bq_user_table.png)
 
-#### 手順通り +
+#### 手順通り
 - csvを返すファイルは *`{任意}.csv.ts/tsx`* とする
 - `vtecxapi.getBQ(sql)` vte.cxのAPIを通じてBigQueryに対して任意のSQLを実行できます。
 - `vtecxapi.doResponseCsv([ headers[], ...entry[] ], '{csvのファイル名}')`
