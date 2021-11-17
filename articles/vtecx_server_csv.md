@@ -1,5 +1,5 @@
 ---
-title: "vtecxのBFF開発"
+title: "vte.cxのBFF開発_csv出力"
 emoji: "🖥"
 type: "tech" # tech: 技術記事 / idea: アイデア
 topics: [vtecx,csv]
