@@ -6,7 +6,7 @@ topics: [vtecx,pdf]
 published: false
 ---
 ### PDFをSSR
-BigQueryのテーブルからデータを取得して、PDF出力します。
+BigQueryのテーブルからデータを取得して、PDFを出力します。
 :::details ↓ファイルをデプロイ
 1. `/server`配下に *`{スクリプト名}.ts/tsx`*~~/js/jsx~~ をおく
 2. `npm run login`　ログインしているサービスにデプロイされる
@@ -75,6 +75,7 @@ const html = ReactDOMServer.renderToStaticMarkup(pdf)
 
 vtecxapi.toPdf(1, html, 'user.pdf')
 ```
+`<div class="_page">`要素には、`style`属性にページの大きさや向き、余白サイズ、暗号化や署名などを設定できます。
 :::details /pdf/pdfstyles.ts
 ```ts
 export const _page: any = {
