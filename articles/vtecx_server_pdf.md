@@ -15,7 +15,7 @@ BigQueryのテーブルからデータを取得して、PDFを出力します。
   `_async`パラメータを付けると非同期リクエスト →別スレッドが起動し、`202 Accepted`を返す。 バッチジョブサーバで、設定されたタイムアウト時間を最大実行時間として処理される。
 :::
 - pdfを返すファイルは *`{任意}.pdf.tsx`* とする
-- `vtecxapi.getBQ(sql)` vte.cxのAPIを通じてBigQueryに対して任意のSQLを実行できます。
+- `vtecxapi.getBQ(sql)` vte.cxからBigQueryに対してSQLを実行
 - `vtecxapi.toPdf(page, html, outfilename)`
   page: ページ数
   html: テンプレートHTML

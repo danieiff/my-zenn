@@ -19,7 +19,7 @@ vte.cxのフロントエンド開発はViewと、ビジネスロジックのみ�
 
 #### 手順通り
 - csvを返すファイルは *`{任意}.csv.ts/tsx`* とする
-- `vtecxapi.getBQ(sql)` vte.cxのAPIを通じてBigQueryに対して任意のSQLを実行できます。
+- `vtecxapi.getBQ(sql)` vte.cxからBigQueryに対してSQLを実行
 - `vtecxapi.doResponseCsv([ headers[], ...entry[] ], '{csvのファイル名}')`
   レスポンスヘッダの`content-disposition: "attachment; filename=\"{csvのファイル名}\""`
 ```ts: user.csv.ts
