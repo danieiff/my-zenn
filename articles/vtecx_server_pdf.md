@@ -8,11 +8,11 @@ published: true
 ### PDFをSSR
 BigQueryのテーブルからデータを取得して、PDFを出力します。
 :::details ↓ファイルをデプロイ
-1. `/server`配下に *`{スクリプト名}.ts/tsx`*~~/js/jsx~~ をおく
-2. `npm run login`　ログインしているサービスにデプロイされる
-3. `npm run watch -- --env entry=/server/{目的のファイル名}` **ES5**へ変換
-4. `GET|POST|PUT /s/{スクリプト名}`と呼び出す。 最大実行時間5分
-  `_async`パラメータを付けると非同期リクエスト: 別スレッドが起動し、`202 Accepted`を返す。 バッチジョブサーバで、設定されたタイムアウト時間を最大実行時間として処理される。
+1. `/server`配下に*`{スクリプト名}.ts/tsx`*~~/js/jsx~~をおく
+2. `npm run login`　→ログインしているサービスにデプロイされる
+3. `npm run watch -- --env entry=/server/{目的のファイル名}` →**ES5**へ変換
+4. `GET|POST|PUT /s/{スクリプト名}`と呼び出す。 →最大実行時間5分
+  `_async`パラメータを付けると非同期リクエスト →別スレッドが起動し、`202 Accepted`を返す。 バッチジョブサーバで、設定されたタイムアウト時間を最大実行時間として処理される。
 :::
 - pdfを返すファイルは *`{任意}.pdf.tsx`* とする
 - `vtecxapi.getBQ(sql)` vte.cxのAPIを通じてBigQueryに対して任意のSQLを実行できます。
@@ -101,7 +101,7 @@ export const _td: any = {
 }
 ```
 :::
-`GET '/s/user.pdf'` `/s/{スクリプト名}` ~~ファイル名~~
+`GET '/s/user.pdf'` ***`/s/{スクリプト名}`*** ~~*`/s/{ファイル名}*~~
 ```ts
 axios.get('/s/user.pdf', { responseType: 'blob' })
 ```

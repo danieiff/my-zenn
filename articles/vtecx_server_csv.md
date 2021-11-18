@@ -7,11 +7,11 @@ published: true
 ---
 vte.cxのフロントエンド開発はViewと、ビジネスロジックのみを責務に持つBFFで完結します。
 ### BFFの開発手順
-1. `/server`配下に *`{スクリプト名}.ts/tsx`*~~/js/jsx~~ をおく
-2. `npm run login`　ログインしているサービスにデプロイされる
-3. `npm run watch -- --env entry=/server/{目的のファイル名}` **ES5**へ変換
-4. `GET|POST|PUT /s/{スクリプト名}`と呼び出す。 最大実行時間5分
-  `_async`パラメータを付けると非同期リクエスト: 別スレッドが起動し、`202 Accepted`を返す。 バッチジョブサーバで、設定されたタイムアウト時間を最大実行時間として処理される。
+1. `/server`配下に*`{スクリプト名}.ts/tsx`*~~/js/jsx~~をおく
+2. `npm run login`　→ログインしているサービスにデプロイされる
+3. `npm run watch -- --env entry=/server/{目的のファイル名}` →**ES5**へ変換
+4. `GET|POST|PUT /s/{スクリプト名}`と呼び出す。 →最大実行時間5分
+  `_async`パラメータを付けると非同期リクエスト →別スレッドが起動し、`202 Accepted`を返す。 バッチジョブサーバで、設定されたタイムアウト時間を最大実行時間として処理される。
 
 ### BFF開発例__データベースからcsv出力
 ↓ BigQueryのテーブルからCSV出力します。
@@ -58,7 +58,7 @@ const csv = [TITLES, ...body]
 
 vtecxapi.doResponseCsv(csv, 'user.csv')
 ```
-ビルド後、`GET '/s/user.csv'` `/s/{スクリプト名}` ~~ファイル名~~
+ビルド後、`GET '/s/user.csv'` ***`/s/{スクリプト名}`*** ~~*`/s/{ファイル名}`*~~
 ```ts
 axios.get('/s/user.csv', { responseType: 'blob' })
 ```
