@@ -3,7 +3,7 @@ title: "vte.cxのBFF開発_データベースからCSV出力"
 emoji: "🖥"
 type: "tech" # tech: 技術記事 / idea: アイデア
 topics: [vtecx,csv]
-published: false
+published: true
 ---
 vte.cxのフロントエンド開発はViewと、ビジネスロジックのみを責務に持つBFFで完結します。
 ### BFFの開発手順

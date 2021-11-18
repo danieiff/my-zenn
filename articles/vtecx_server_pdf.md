@@ -3,7 +3,7 @@ title: "vte.cxでPDFをSSR"
 emoji: "🖥"
 type: "tech" # tech: 技術記事 / idea: アイデア
 topics: [vtecx,pdf]
-published: false
+published: true
 ---
 ### PDFをSSR
 BigQueryのテーブルからデータを取得して、PDFを出力します。
