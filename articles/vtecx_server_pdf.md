@@ -101,7 +101,7 @@ export const _td: any = {
 }
 ```
 :::
-`GET '/s/user.pdf'` ***`/s/{スクリプト名}`*** ~~*`/s/{ファイル名}*~~
+`GET '/s/user.pdf'`  ***`'/s/{スクリプト名}'`*** ~~*`'/s/{ファイル名}'`*~~
 ```ts
 axios.get('/s/user.pdf', { responseType: 'blob' })
 ```

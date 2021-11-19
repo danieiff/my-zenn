@@ -58,7 +58,7 @@ const csv = [TITLES, ...body]
 
 vtecxapi.doResponseCsv(csv, 'user.csv')
 ```
-ビルド後、`GET '/s/user.csv'` ***`/s/{スクリプト名}`*** ~~*`/s/{ファイル名}`*~~
+ビルド後、`GET '/s/user.csv'` ***`'/s/{スクリプト名}'`*** ~~*`'/s/{ファイル名}'`*~~
 ```ts
 axios.get('/s/user.csv', { responseType: 'blob' })
 ```
