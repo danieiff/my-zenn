@@ -63,7 +63,7 @@ const pdf = (
           </tr>
         {feed.map( (entry: any) =>
           <tr>
-          {ITEMS.map( item => <td style={_td}>{entry[item] ?? '未登録'}</td> )}
+            {ITEMS.map( item => <td style={_td}>{entry[item] ?? '未登録'}</td> )}
           </tr>
         )}
         </table>
@@ -101,7 +101,7 @@ export const _td: any = {
 }
 ```
 :::
-`GET '/s/user.pdf'` ***`/s/{スクリプト名}`*** ~~*`/s/{ファイル名}*~~
+`GET '/s/user.pdf'` ***`/s/{スクリプト名}`*** ~~*`/s/{ファイル名}`*~~
 ```ts
 axios.get('/s/user.pdf', { responseType: 'blob' })
 ```
