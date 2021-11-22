@@ -29,7 +29,7 @@ React17-JSXの変換に`import * as React from 'react``が不要になった｡ 
 react-jsx, react-jsxdev
 https://github.com/microsoft/TypeScript/pull/39199
 
-:::detailed tsconfigをproduction, developmentで分ける
+:::details tsconfigをproduction, developmentで分ける
 ```js:webpack.config.js
 module.exports = (_, argv) => {
   return {
@@ -93,7 +93,7 @@ module.exports = {
   },
 }
 ```
-:::detailed eslintエラーが出たら
+:::details eslintエラーが出たら
 ```.eslintrc.json
 {
   "extends": [
@@ -101,8 +101,9 @@ module.exports = {
     "plugin:@typescript",
     "plugin:react/recommended",
     "plugin:react/jsx-runtime",
-    "prettier"],
+    "prettier"
   ]
 }
+```
 :::
 以上
