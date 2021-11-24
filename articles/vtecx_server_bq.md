@@ -3,9 +3,9 @@ title: "vte.cxとBigQueryを連携する"
 emoji: "🖥"
 type: "tech" # tech: 技術記事 / idea: アイデア
 topics: [vtecx,bigquery,sql]
-published: false
+published: true
 ---
-vte.cxのデータストアをBigQueryにして、vte.cxを通して各処理SQLを実行させます
+vte.cxのデータストアをBigQueryにして、vte.cxのAPIを通してSQLを実行します
 ### 0. BigQueryの準備
 1. データセット作成
 2. BigQueryのサービスアカウント秘密鍵作成
