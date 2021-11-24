@@ -34,7 +34,7 @@ _bigquery.location=asia-northeast1
 ```
 3. `npm run upload`
 ### 登録
-初回登録時にvte.cx側のスキーマから`key (STRING)`, `updated (DATETIME)`,`deleted (BOOL)`項目を持つテーブル作成されます
+初回登録時にvte.cx側のスキーマの項目と、`key (STRING)`, `updated (DATETIME)`,`deleted (BOOL)`項目を持つテーブル作成されます
 `postBQ(request: any, async: boolean, tablenames?: any): void`
 #### APIの解説
 request:
@@ -124,7 +124,7 @@ vtecxapi.doResponse(result)
 ```ts: /src/components/read.ts
  const read = async () => await axios.get('/s/readBQ')
 ```
-###　編集
+### 編集
 編集するデータの`key`で勝手に新しく登録します。
 ### 削除
 `postBQ`→引数`request`の`link`の`___href`がテーブルに`key`項目として登録される。
@@ -241,7 +241,7 @@ export const usePage = () => {
 ```tsx: /src/components/getUsers.tsx
 import { usePage } from '../hooks/usePage'
 const shouldUpdateKeyset = useRef(true)
-const getUsers = () => {
+const Users = () => {
   const [keyset, setKeyset] = useState([])
   const page = usePage()
   const [feed, setFeed] = useState([])
