@@ -124,6 +124,8 @@ vtecxapi.doResponse(result)
 ```ts: /src/components/read.ts
  const read = async () => await axios.get('/s/readBQ')
 ```
+###　編集
+編集するデータの`key`で勝手に新しく登録します。
 ### 削除
 `postBQ`→引数`request`の`link`の`___href`がテーブルに`key`項目として登録される。
 `deleteBQ`→引数`keys: string[]`にテーブルの`key`項目を入れる
@@ -172,7 +174,7 @@ const total = getBQ(sql) // =>[ { 'title': '合計件数' } ] ←SQLクエリの
 vtecxapi.doResponse(total) // レスポンスに入れるエントリにはATOM項目とユーザー定義スキーマの項目のみを入れられる
 ```
 ### ページネーションと検索を実行するSQL例
-####　`OFFSET`句を利用したページネーションと検索機能
+#### `OFFSET`句を利用したページネーションと検索機能
 ```ts: /src/server/getUsers.ts
 import * as vtecxapi from 'vtecxapi'
 import { escape } from 'sqlstring'
