@@ -172,6 +172,7 @@ const total = getBQ(sql) // =>[ { 'title': '合計件数' } ] ←SQLクエリの
 vtecxapi.doResponse(total) // レスポンスに入れるエントリにはATOM項目とユーザー定義スキーマの項目のみを入れられる
 ```
 ### ページネーションと検索を実行するSQL例
+####　`OFFSET`句を利用したページネーションと検索機能
 ```ts: /src/server/getUsers.ts
 import * as vtecxapi from 'vtecxapi'
 import { escape } from 'sqlstring'
@@ -244,7 +245,7 @@ const getUsers = () => {
   const [feed, setFeed] = useState([])
   const getFeed = () => {
     if (shouldUpdateKeyset.current) {
-      const _keyset = async () => await axios.get('/s/getPaginationKeyset')
+      const _keyset = async () => await axios.get('/s/getKeyset')
       // =>[ { title: '11', subtitle: '1' }, { title: '5', subtitle: '2' }, { title: '1', subtitle: '3' } ]
       // (データが15個ある場合), 'title'に`userid`、`subtitle`にページ番号
       setKeyset(_keyset.data.map(({title})=>title))
@@ -261,7 +262,7 @@ const getUsers = () => {
 ```
 サーバー側
 1. ページのキーセットを抽出
-```ts: /src/server/getPaginationKeyset.ts
+```ts: /src/server/getKeyset.ts
 import * as vtecxapi from 'vtecxapi'
 const DATASET = 'データセット'
 const TABLE = 'テーブル'
@@ -325,7 +326,7 @@ import { escape } from 'sqlstring'
 const DATASET = 'データセット'
 const TABLE = 'テーブル'
 const LENGTH = 5
-const pagekey = escape(encodeURIComponent(vtecxapi.getQueryString('pagekey'))) || 0
+const pagekey = escape(vtecxapi.getQueryString('pagekey')) || 0
 const ITEMS = [ 'name', 'userid', 'gender', 'birth', 'age', 'tel', 'email', 'address', 'postcode', 'memo']
 const feed = vtecxapi.getBQ(`
 select
@@ -351,4 +352,4 @@ ${ORDER/*'userid'降順*/}
 limit ${LENGTH}
 `)
 ```
-\+ データの合計数を取得する､結果をフィルターする(→検索機能)など｡
+\+ 必要に応じてデータの合計数を取得する､結果をフィルターする(→検索機能)など｡
