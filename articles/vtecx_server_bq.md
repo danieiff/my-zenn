@@ -1,13 +1,12 @@
 ---
-title: ""
-emoji: "🐈"
+title: "vte.cxとBigQueryを連携する"
+emoji: "🖥"
 type: "tech" # tech: 技術記事 / idea: アイデア
-topics: []
+topics: [vtecx,bigquery,sql]
 published: false
 ---
 vte.cxのデータストアをBigQueryにして、vte.cxを通して各処理SQLを実行させます
 ### 0. BigQueryの準備
-一般的にGoogleのサービスにAPIリクエストを送るときに準備が必要です
 1. データセット作成
 2. BigQueryのサービスアカウント秘密鍵作成
   サービスアカウントとは、Googleの各サービスに対する権限を持つアカウントです。Googleのサービスに対しAPIリクエストを行う際に認証情報として使用します。
