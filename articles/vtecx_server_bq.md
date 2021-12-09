@@ -349,7 +349,7 @@ from
     f.key = k.key
 where
   f.deleted = false and
-  userid >= ${pagekey/*'userid'がページキーである'userid'と等しいか、それより小さい行を'LENGTH'分だけ抽出*/}
+  cast(userid as int) >= ${pagekey/*'userid'がページキーである'userid'と等しいか、それより小さい行を'LENGTH'分だけ抽出*/}
 ${ORDER/*'userid'降順*/}
 limit ${LENGTH}
 `)
