@@ -2,7 +2,7 @@
 title: "vte.cxのグループ権限"
 emoji: "🖥"
 type: "tech" # tech: 技術記事 / idea: アイデア
-topics: [vtecx]
+topics: ["vtecx"]
 published: true
 ---
 グループの目的は、ユーザーの権限をグループ一括で管理することです。
