@@ -1,6 +1,6 @@
 ---
 title: "vte.cxのグループ権限"
-emoji: "��"
+emoji: "🖥"
 type: "tech" # tech: 技術記事 / idea: アイデア
 topics: [vtecx]
 published: true
