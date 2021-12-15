@@ -32,12 +32,6 @@ const owner_participation_entry = {
     { ___rel: 'alternate', ___href: '/_user/123/group/group_123'} /*(2)*/
   ]
 }
-const guest_participation_entry = {
-  link: [
-    { ___rel: 'self', ___href: '/groupS/group_123/456'},
-    { ___rel: 'alternate', ___href: '/_user/456/group/group_123'}
-  ]
-}
 ```
 グループ作成者が下を`POST`する。 グループは作成され、グループ作成者はこれに所属します
 ```ts
