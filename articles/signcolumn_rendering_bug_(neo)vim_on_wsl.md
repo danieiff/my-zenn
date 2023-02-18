@@ -21,7 +21,7 @@ Vim/NeoVimのVirtual Textが行末に到達した場合に、画面の右側に�
 - バグ報告される https://github.com/microsoft/terminal/issues/6865
 - 原因特定される https://github.com/microsoft/terminal/issues/6987#issuecomment-1433461701
 - Collaborator様による修正がmerge https://github.com/microsoft/terminal/pull/14735
-- 2/27 Release https://github.com/microsoft/terminal/pull/14735
+- 1/27 Release https://github.com/microsoft/terminal/pull/14735
 
 ## 対応
 
