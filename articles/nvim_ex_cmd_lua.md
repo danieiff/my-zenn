@@ -102,3 +102,6 @@ local TRLBAR     =     0x100
 `++ flags=bit.bor(RANGE, EXTRA, NEEDARG, CMDWIN, LOCK_OK, TRLBAR)` 
 
 - ユーザー定義コマンドでは、これらのフラグを設定できる
+
+- エスケープハッチ `:help :execute` Exp) `:execute 'lua print("foo")' | execute 'pwd'`
+
