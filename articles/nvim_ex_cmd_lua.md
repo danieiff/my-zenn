@@ -31,7 +31,7 @@ return module
 内部処理の続き
 - ↑↑`func='ex_lua'`... ExCommand`:lua`で`ex_lua関数`が呼ばれる https://github.com/neovim/neovim/blob/master/src/nvim/lua/executor.c#L1610-L1639
 
-- ↑↑ から`build/src/nvim/auto/ex_cmds_defs.generated.h`を生成するスクリプト ttps://github.com/neovim/neovim/blob/master/src/nvim/ex_cmds.lua 
+- ↑↑ から`build/src/nvim/auto/ex_cmds_defs.generated.h`を生成するスクリプト https://github.com/neovim/neovim/blob/master/src/nvim/ex_cmds.lua 
 (NeoVim コンパイル時に呼ばれる。 https://github.com/neovim/neovim/blob/master/src/nvim/CMakeLists.txt#L263)
 ```lua
 local defsfname = autodir .. '/ex_cmds_defs.generated.h'
