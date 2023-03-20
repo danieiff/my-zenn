@@ -23,7 +23,7 @@ module.cmds = {
 }
 return module
 ```
-`flags=bit.bor(RANGE, EXTRA, NEEDARG, CMDWIN, LOCK_OK)` ExCommand`:lua`のフラグが設定される。引数(RANGE...)はそれぞれビット列。XOR演算されてメモリに格納される。 **`見ての通りTRLBAR`は設定されてない**
+`flags=bit.bor(RANGE, EXTRA, NEEDARG, CMDWIN, LOCK_OK)` ExCommand`:lua`のフラグが設定される。引数(RANGE...)はそれぞれビット列。XOR演算されてメモリに格納される。 **見ての通り`TRLBAR`は設定されてない**
 
 ### `TRLBAR`フラグが無効のExCommand
 `|`がコマンド分割として働かない(=`|` 自体がExCommandの引数の一部として扱われる)
